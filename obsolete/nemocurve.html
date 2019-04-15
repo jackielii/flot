@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>curve</title>
+
+<script src="jquery-1.2.6.pack.js" type="text/javascript"></script>
+<script src="jquery.drawinglibrary.js" type="text/javascript"></script>
+<script type="text/javascript" src="jquery.svg.js"></script>
+<script type="text/javascript" src="jquery.svganim.min.js"></script>
+<style type="text/css">
+<!--
+#myCanvas {
+	position: absolute;
+	left: 85px;
+	top: 65px;
+	border : 1px solid blue;
+	width: 149px;
+	height: 611px;
+	overflow: hidden;
+}
+
+#myCanvas1{
+	position: absolute;
+	left: 461px;
+	top: 67px;
+	border : 1px solid blue;
+	width: 149px;
+	height: 611px;
+	overflow: hidden;
+}
+#pos {
+	background-color: #000000;
+	width: 149px;
+	height: 1px;
+	position: absolute;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+#pos_xy {
+	border : 1px solid;
+	float:right ; 
+
+}
+-->
+</style>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	z=[[ 19 , 1 ] , [ 19 , 11 ] , [ 11 , 21 ] , [ 7 , 31 ] , [ 4 , 41 ] , [ 12 , 51 ] , [ 9 , 61 ] , [ 20 , 71 ] , [ 7 , 81 ] , [ 7 , 91 ] , [ 15 , 101 ] , [ 10 , 111 ] , [ 9 , 121 ] , [ 3 , 131 ] , [ 10 , 141 ] , [ 12 , 151 ] , [ 14 , 161 ] , [ 1 , 171 ] , [ 7 , 181 ] , [ 14 , 191 ] , [ 2 , 201 ] , [ 13 , 211 ] , [ 13 , 221 ] , [ 19 , 231 ] , [ 10 , 241 ] , [ 6 , 251 ] , [ 12 , 261 ] , [ 12 , 271 ] , [ 18 , 281 ] , [ 10 , 291 ] , [ 10 , 301 ] , [ 20 , 311 ] , [ 6 , 321 ] , [ 14 , 331 ] , [ 13 , 341 ] , [ 13 , 351 ] , [ 7 , 361 ] , [ 18 , 371 ] , [ 0 , 381 ] , [ 19 , 391 ] , [ 13 , 401 ] , [ 2 , 411 ] , [ 1 , 421 ] , [ 11 , 431 ] , [ 13 , 441 ] , [ 10 , 451 ] , [ 15 , 461 ] , [ 3 , 471 ] , [ 9 , 481 ] , [ 13 , 491 ] , [ 15 , 501 ] , [ 8 , 511 ] , [ 8 , 521 ] , [ 0 , 531 ] , [ 14 , 541 ] , [ 0 , 551 ] , [ 15 , 561 ] , [ 9 , 571 ] , [ 18 , 581 ] , [ 14 , 591 ] , [ 13 , 601 ] , [ 13 , 611 ] , [ 2 , 621 ] , [ 19 , 631 ] , [ 8 , 641 ] , [ 5 , 651 ] , [ 16 , 661 ] , [ 13 , 671 ] , [ 1 , 681 ] , [ 13 , 691 ] , [ 4 , 701 ] , [ 1 , 711 ] , [ 5 , 721 ] , [ 0 , 731 ] , [ 0 , 741 ] , [ 3 , 751 ] , [ 2 , 761 ] , [ 6 , 771 ] , [ 18 , 781 ] , [ 20 , 791 ] , [ 8 , 801 ] , [ 4 , 811 ] , [ 5 , 821 ] , [ 17 , 831 ] , [ 4 , 841 ] , [ 7 , 851 ] , [ 18 , 861 ] , [ 4 , 871 ] , [ 0 , 881 ] , [ 13 , 891 ] , [ 11 , 901 ] , [ 18 , 911 ] , [ 11 , 921 ] , [ 5 , 931 ] , [ 11 , 941 ] , [ 4 , 951 ] , [ 11 , 961 ] , [ 0 , 971 ] , [ 10 , 981 ] , [ 7 , 991 ]]
+
+	$("#myCanvas1").svg({onLoad: drawIntro});
+	function drawIntro(svg) { 
+ 		var path = svg.createPath();
+		var path1=svg.path(path.moveTo(19,1).lineTo(z), {fill: 'none', stroke: '#D90000', strokeWidth: 1});
+	}
+	$("#pos").hide();
+/*	var svg = $("#myCanvas1").svg("get");
+	$("#myCanvas1").hover(function(){
+		$('path', svg.root()).animate({svgStrokeWidth: '+=3',svgStroke: 'aqua'},500);
+	},function(e){
+		$('path', svg.root()).animate({svgStrokeWidth: '-=3',svgStroke: '#D90000'},500);
+	});*/
+	
+	$("#myCanvas1").click(function(e){
+		$("#pos").css({left: "462px",top: e.pageY});
+		$("#pos").show();
+		/*$("#pos_xy").hide();*/
+		$("#pos_xy").html("<b>x:"+e.pageX+"<br />y:"+e.pageY+"</b>");
+		$("#pos_xy").slideDown("slow");
+	});
+});
+</script>
+<h2 id="status2">
+0, 0
+</h2>
+<div id="myCanvas"></div>
+<div id="myCanvas1"></div>
+<div id="pos"><div id="pos_xy"></div></div>
+
+</body>
+</html>

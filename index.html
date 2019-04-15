@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>测井曲线</title>
+<!--[if IE]><script language="javascript" type="text/javascript" src="js/excanvas.pack.js"></script><![endif]-->
+<script language="JavaScript" src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/jquery.flot.barY.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/jquery.bgiframe.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/CALSLASHCM.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/GRSLASHAPI.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/SPSLASHmV.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/DEN.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/CNL.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/lith1.js" type="text/javascript"></script>
+<script language="JavaScript" src="js/drawcurve.js" type="text/javascript"></script>
+<link type="text/css" href="css/log_curve.css" rel="stylesheet" />
+<link type="text/css" href="css/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function () {
+    drawcurve();
+});
+</script>
+<div id="main">
+	<div class="ui-tabs-panel" id="choice">请选择要绘制的曲线:
+		<input name="CAL/CM" checked="checked" type="checkbox">CAL/CM
+		<input name="GR/API" checked="checked" type="checkbox">GR/API
+		<input name="SP/mV" checked="checked" type="checkbox">SP/mV
+  </div>
+	<div id="header_main">
+      <div class="header" id="header1">
+        <div class="log_legend ui-state-default" id="data1"><p><center>CAL/CM</center></p></div>
+        <div class="log_legend ui-state-default" id="data2"><p><center>GR/API</center></p></div>
+        <div class="log_legend ui-state-default" id="data3"><p><center>SP/mV</center></p></div>	
+      </div>
+	  <div class="header" id="header2">
+        <div class="log_legend ui-state-default" id="data4"><p><center>DEN</center></p></div>
+	  </div>
+	  <div class="header" id="header3">
+        <div class="log_legend ui-state-default" id="data5"><p><center>CNL</center></p></div>	
+	  </div>
+	  <div class="header" id="lith_header">
+	  	<span style="border-right:solid 1px; height:120px; position:relative; float:left; font-size:22px; right:-15px;"><br />深&nbsp;&nbsp;度<p><center style="font-size:12px">(单位:米)</center></p></span>
+	  	<span style="position:relative; float:left; top:40%; left:30%; font-size:20px">岩性</span>
+	  </div>
+	</div>  
+	  <div id="curve_main">
+		  <div id="curve1" class="curve"></div>
+		  <div id="curve2" class="curve"></div>
+		  <div id="curve3" class="curve"></div>
+		  <div id="lith" class="curve"></div>
+	  </div>
+	<div id="pos"><div id="pos_xy"></div></div>
+</div>
+<div id="dialog" title="道头选项">
+	<p>这里显示道头的一些选项.</p>
+</div>
+</body>
+</html>
